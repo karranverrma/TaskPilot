@@ -47,7 +47,7 @@ router.get('/', authenticate, (req, res) => {
       FROM tasks t
       JOIN projects p ON p.id = t.project_id
       WHERE t.assigned_to = ? AND t.status != 'done'
-      ORDER BY t.due_date ASC NULLS LAST
+      ORDER BY t.due_date IS NULL, t.due_date ASC
       LIMIT 5
     `).all(userId);
 
@@ -87,7 +87,7 @@ router.get('/', authenticate, (req, res) => {
       FROM tasks t
       JOIN projects p ON p.id = t.project_id
       WHERE t.assigned_to = ? AND t.status != 'done'
-      ORDER BY t.due_date ASC NULLS LAST
+      ORDER BY t.due_date IS NULL, t.due_date ASC
       LIMIT 8
     `).all(userId);
 
