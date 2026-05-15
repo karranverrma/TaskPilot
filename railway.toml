@@ -2,6 +2,9 @@
 builder = "NIXPACKS"
 buildCommand = "cd frontend && npm install && npm run build && cd ../backend && npm install"
 
+[variables]
+NIXPACKS_NODE_VERSION = "22"
+
 [deploy]
 startCommand = "cd backend && npm start"
 healthcheckPath = "/api/health"
